@@ -1,0 +1,123 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 5rem auto;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+.heading1, .heading2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(90deg, #4f46e5 0%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1.2;
+}
+
+.heading2 {
+    margin-top: 2rem;
+}
+
+.search {
+    width: 100%;
+    padding: 12px 20px;
+    margin-bottom: 2rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.search:focus {
+    outline: none;
+    border-color: #a5b4fc;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+/* hr {
+    border: 0;
+    height: 1px;
+    background-color: #e2e8f0;
+    margin: 1.5rem 0;
+} */
+
+.field-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #4f46e5;
+    margin: 2rem 0 1rem 0;
+}
+
+.recommendations {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.recommendation-tab {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.recommendation-tab:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: #a5b4fc;
+}
+
+.recommendation-tab-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.recommendation-tab-category {
+    font-size: 0.9rem;
+    color: #4f46e5;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.recommendation-tab-description {
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .dashboard-container {
+        margin-top: 3rem;
+        padding: 1rem;
+    }
+
+    .heading1, .heading2 {
+        font-size: 1.5rem;
+    }
+
+    .field-title {
+        font-size: 1.25rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .recommendations {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,137 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+/* body {
+    background-color: #f8fafc;
+    font-family: 'Inter', sans-serif;
+} */
+
+.home-container {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 2rem;
+}
+
+.tabs {
+    display: flex;
+    justify-content: right;
+    gap: 1.5rem;
+    margin: 5rem 0;
+    flex-wrap: wrap;
+}
+
+.tab {
+    border: 1px solid #e2e8f0;
+    width: 250px;
+    height: 150px;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    background: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.tab:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: #a5b4fc;
+}
+
+.tab-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4f46e5;
+    margin-bottom: 10px;
+}
+
+.tab-text {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #64748b;
+}
+
+.heading {
+    font-size: 4rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #4f46e5 0%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
+.description {
+    font-weight: 500;
+    min-width: 350px;
+    color: #475569;
+    font-size: 1.1rem;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+.explore-btn button {
+    border: none;
+    padding: 5px;
+    width: 150px;
+    height: 40px;
+    font-weight: 500;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #4f46e5 0%, #06b6d4 100%);
+    color: white;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.explore-btn button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
+}
+
+@media screen and (max-width: 768px) {
+    .home-container {
+        margin-top: 3rem;
+        padding: 1rem;
+    }
+
+    .heading {
+        font-size: 3rem;
+    }
+
+    .tabs {
+        justify-content: center;
+        margin: 3rem 0;
+    }
+
+    .main-text {
+        padding: 0 1rem;
+    }
+}
+
+@media screen and (max-width: 673px) {
+    .tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .tab {
+        width: 100%;
+        max-width: 300px;
+    }
+}

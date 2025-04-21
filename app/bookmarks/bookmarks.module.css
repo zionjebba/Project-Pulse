@@ -1,0 +1,89 @@
+.bookmarks_container {
+  max-width: 1200px;
+  margin: 5rem auto;
+  padding: 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #4f46e5 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1.2;
+}
+
+.recommendations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.recommendation_tab {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  width: calc(25% - 1.5rem);
+  min-width: 280px;
+}
+
+.recommendation_tab:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border-color: #a5b4fc;
+}
+
+.recommendation_tab_title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.recommendation_tab_category {
+  font-size: 0.9rem;
+  color: #4f46e5;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.recommendation_tab_description {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1024px) {
+  .recommendation_tab {
+      width: calc(33.33% - 1.5rem);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .bookmarks-_container {
+      margin-top: 3rem;
+      padding: 1rem;
+  }
+  
+  .title {
+      font-size: 1.5rem;
+  }
+  
+  .recommendation_tab {
+      width: calc(50% - 1.5rem);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .recommendation_tab {
+      width: 100%;
+  }
+}
