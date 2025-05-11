@@ -1,0 +1,247 @@
+{
+  "projects": {
+    "technology": [
+      {
+        "id": "tech-001",
+        "title": "Library Management System",
+        "category": "Web Development",
+        "description": "Build a digital library system with user authentication and book tracking",
+        "details": {
+          "fullDescription": "Develop a comprehensive library management system that handles book inventory, member registrations, and loan tracking. The system should include admin controls for librarians and a user portal for patrons to search and reserve books. Implement features like due date reminders, late fee calculations, and book recommendation algorithms.",
+          "difficulty": "Intermediate",
+          "duration": "4-6 weeks",
+          "learningObjectives": [
+            "Database design with relationships",
+            "User authentication flows",
+            "CRUD operations",
+            "Search and filtering implementation"
+          ],
+          "steps": [
+            {
+              "title": "Project Setup",
+              "items": [
+                "Install Node.js and npm",
+                "Set up React frontend with Vite",
+                "Initialize Express.js backend",
+                "Configure MongoDB connection"
+              ]
+            },
+            {
+              "title": "Database Design",
+              "items": [
+                "Create schemas for Books, Users, and Loans",
+                "Implement indexes for efficient searching",
+                "Set up relationships between collections"
+              ]
+            },
+            {
+              "title": "Core Functionality",
+              "items": [
+                "Develop book checkout/return system",
+                "Implement user authentication",
+                "Build admin dashboard",
+                "Create book search functionality"
+              ]
+            }
+          ],
+          "resources": {
+            "tools": [
+              {
+                "name": "MongoDB",
+                "link": "https://www.mongodb.com/docs/"
+              },
+              {
+                "name": "Express.js",
+                "link": "https://expressjs.com/"
+              },
+              {
+                "name": "React",
+                "link": "https://react.dev/learn"
+              }
+            ],
+            "guides": [
+              {
+                "title": "Mongoose ORM Guide",
+                "link": "https://mongoosejs.com/docs/guide.html"
+              },
+              {
+                "title": "JWT Authentication",
+                "link": "https://jwt.io/introduction"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "tech-002",
+        "title": "AI-Powered Chatbot",
+        "category": "Artificial Intelligence",
+        "description": "Create a conversational chatbot using Python and NLP",
+        "details": {
+          "fullDescription": "Develop an intelligent chatbot capable of understanding natural language queries and providing context-aware responses. The chatbot should integrate with common messaging platforms and include features like sentiment analysis and conversation history.",
+          "difficulty": "Advanced",
+          "duration": "6-8 weeks",
+          "learningObjectives": [
+            "Natural Language Processing basics",
+            "Neural network architectures",
+            "API integration",
+            "Context preservation in conversations"
+          ],
+          "steps": [
+            {
+              "title": "Data Collection",
+              "items": [
+                "Gather domain-specific training data",
+                "Clean and preprocess text data",
+                "Create intent classification dataset"
+              ]
+            },
+            {
+              "title": "Model Training",
+              "items": [
+                "Implement sequence-to-sequence model",
+                "Train on GPU-accelerated hardware",
+                "Evaluate using BLEU score"
+              ]
+            }
+          ],
+          "resources": {
+            "tools": [
+              {
+                "name": "Python",
+                "link": "https://docs.python.org/3/"
+              },
+              {
+                "name": "TensorFlow",
+                "link": "https://www.tensorflow.org/learn"
+              }
+            ],
+            "guides": [
+              {
+                "title": "NLTK Documentation",
+                "link": "https://www.nltk.org/"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "tech-003",
+        "title": "E-Commerce Platform",
+        "category": "Full-Stack Development",
+        "description": "Build an online store with payment processing",
+        "details": {
+          "fullDescription": "Create a complete e-commerce solution featuring product catalog, shopping cart, user accounts, and Stripe payment integration. Includes admin dashboard for inventory management and order processing.",
+          "difficulty": "Advanced",
+          "duration": "8-10 weeks",
+          "learningObjectives": [
+            "Payment gateway integration",
+            "Shopping cart state management",
+            "Product variant handling",
+            "Order processing workflow"
+          ],
+          "resources": {
+            "tools": [
+              {
+                "name": "Stripe API",
+                "link": "https://stripe.com/docs"
+              },
+              {
+                "name": "Next.js",
+                "link": "https://nextjs.org/docs"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "health": [
+      {
+        "id": "health-001",
+        "title": "Fitness Tracker App",
+        "category": "Mobile Development",
+        "description": "Track workouts and nutrition with data visualization",
+        "details": {
+          "fullDescription": "Develop a cross-platform mobile application for tracking exercise routines, nutrition intake, and progress metrics with data visualization and social sharing features.",
+          "difficulty": "Intermediate",
+          "duration": "6-8 weeks",
+          "learningObjectives": [
+            "Mobile UI development",
+            "Health data visualization",
+            "Offline data sync",
+            "Sensor data integration"
+          ]
+        }
+      },
+      {
+        "id": "health-002",
+        "title": "Telemedicine Platform",
+        "category": "Web Development",
+        "description": "Secure video consultations for doctors and patients",
+        "details": {
+          "fullDescription": "Build a HIPAA-compliant telemedicine platform with video consultations, appointment scheduling, prescription management, and patient records system.",
+          "difficulty": "Advanced",
+          "duration": "10-12 weeks",
+          "steps": [
+            {
+              "title": "Core Features",
+              "items": [
+                "Implement WebRTC video calls",
+                "Build scheduling system",
+                "Create patient records interface"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "business": [
+      {
+        "id": "biz-001",
+        "title": "Inventory Management System",
+        "category": "Desktop Application",
+        "description": "Track stock levels and generate reports",
+        "details": {
+          "fullDescription": "Develop a desktop application for small businesses to manage inventory, track sales, generate reports, and automate reordering processes.",
+          "difficulty": "Intermediate",
+          "duration": "5-7 weeks"
+        }
+      },
+      {
+        "id": "biz-002",
+        "title": "Customer Relationship Manager",
+        "category": "Web Application",
+        "description": "Manage client interactions and sales pipelines",
+        "details": {
+          "fullDescription": "Create a CRM tool for managing client interactions, sales pipelines, marketing campaigns, and customer support tickets with analytics dashboard.",
+          "difficulty": "Intermediate",
+          "duration": "6-8 weeks"
+        }
+      }
+    ],
+    "education": [
+      {
+        "id": "edu-001",
+        "title": "E-Learning Platform",
+        "category": "Web Development",
+        "description": "Course management with video lessons and quizzes",
+        "details": {
+          "fullDescription": "Build a comprehensive e-learning platform with course creation tools, video lessons, interactive quizzes, progress tracking, and certification system.",
+          "difficulty": "Advanced",
+          "duration": "8-10 weeks"
+        }
+      },
+      {
+        "id": "edu-002",
+        "title": "Flashcard App",
+        "category": "Mobile Development",
+        "description": "Spaced repetition learning tool",
+        "details": {
+          "fullDescription": "Develop a mobile flashcard application using spaced repetition algorithms to optimize learning and memorization of concepts across various subjects.",
+          "difficulty": "Intermediate",
+          "duration": "4-6 weeks"
+        }
+      }
+    ]
+  }
+}

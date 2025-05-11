@@ -32,7 +32,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+    afterSignInUrl='/dashboard'  
+>
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
           <header className="flex justify-between items-center p-4 gap-4 h-16">
@@ -53,6 +55,7 @@ export default function RootLayout({
                 <Link href="/bookmarks" className="hover:text-blue-500">
                   Bookmarks
                 </Link>
+
               </SignedIn>
               
               {/* Auth buttons */}
