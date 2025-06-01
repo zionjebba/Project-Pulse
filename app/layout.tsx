@@ -55,7 +55,9 @@ export default function RootLayout({
                 <Link href="/bookmarks" className="hover:text-blue-500">
                   Bookmarks
                 </Link>
-
+                <Link href="/chat" className="hover:text-blue-500">
+                  Chatbot
+                </Link>
               </SignedIn>
               
               {/* Auth buttons */}

@@ -1,4 +1,3 @@
-// app/bookmarks/page.tsx
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
@@ -59,11 +58,7 @@ export default function Bookmarks() {
       {bookmarkedProjects.length > 0 ? (
         <div className={styles.projects_grid}>
           {bookmarkedProjects.map(project => (
-            <Link 
-              key={project.id}
-              href={`/projectspage/${project.id}`}
-              className={styles.project_card}
-            >
+            <div key={project.id} className={styles.project_card}>
               <button
                 onClick={(e) => handleRemoveBookmark(project.id, e)}
                 className={styles.remove_btn}
@@ -71,26 +66,30 @@ export default function Bookmarks() {
               >
                 &times;
               </button>
-              
-              <h3 className={styles.project_title}>{project.title}</h3>
-              <p className={styles.project_category}>{project.category}</p>
-              <p className={styles.project_desc}>{project.description}</p>
-              
-              {project.details && (
-                <div className={styles.project_meta}>
-                  {project.details.difficulty && (
-                    <span className={styles.meta_item}>
-                      Difficulty: {project.details.difficulty}
-                    </span>
-                  )}
-                  {project.details.duration && (
-                    <span className={styles.meta_item}>
-                      Duration: {project.details.duration}
-                    </span>
+
+              <Link href={`/projectspage/${project.id}`} className={styles.link_wrapper}>
+                <div className={styles.card_content}>
+                  <h3 className={styles.project_title}>{project.title}</h3>
+                  <p className={styles.project_category}>{project.category}</p>
+                  <p className={styles.project_desc}>{project.description}</p>
+
+                  {project.details && (
+                    <div className={styles.project_meta}>
+                      {project.details.difficulty && (
+                        <span className={styles.meta_item}>
+                          Difficulty: {project.details.difficulty}
+                        </span>
+                      )}
+                      {project.details.duration && (
+                        <span className={styles.meta_item}>
+                          Duration: {project.details.duration}
+                        </span>
+                      )}
+                    </div>
                   )}
                 </div>
-              )}
-            </Link>
+              </Link>
+            </div>
           ))}
         </div>
       ) : (

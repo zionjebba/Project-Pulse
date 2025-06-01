@@ -78,8 +78,63 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
         <div className={styles.detailsSection}>
           <h2 className={styles.subHeading}>Project Details</h2>
           <div className={styles.detailGrid}>
-            {/* ... rest of your existing details rendering ... */}
-          </div>
+{project.details?.steps && (
+  <div className={styles.stepsSection}>
+    <h3 className={styles.sectionTitle}>Implementation Steps</h3>
+    <div className={styles.stepsContainer}>
+      {project.details.steps.map((step, index) => (
+        <div key={index} className={styles.stepCard}>
+          <h4 className={styles.stepTitle}>
+            <span className={styles.stepNumber}>Step {index + 1}:</span> {step.title}
+          </h4>
+          <ul className={styles.stepItems}>
+            {step.items.map((item, itemIndex) => (
+              <li key={itemIndex} className={styles.stepItem}>
+                <span className={styles.itemBullet}>•</span> {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
+
+{project.details?.resources && (
+  <div className={styles.resourcesSection}>
+    <h3 className={styles.sectionTitle}>Resources</h3>
+    <div className={styles.resourcesGrid}>
+      {project.details.resources.tools && (
+        <div className={styles.resourceCategory}>
+          <h4 className={styles.resourceHeader}>Tools & Technologies</h4>
+          <ul className={styles.resourceList}>
+            {project.details.resources.tools.map((tool, index) => (
+              <li key={index} className={styles.resourceItem}>
+                <a href={tool.link} target="_blank" rel="noopener noreferrer" className={styles.resourceLink}>
+                  {tool.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {project.details.resources.guides && (
+        <div className={styles.resourceCategory}>
+          <h4 className={styles.resourceHeader}>Learning Guides</h4>
+          <ul className={styles.resourceList}>
+            {project.details.resources.guides.map((guide, index) => (
+              <li key={index} className={styles.resourceItem}>
+                <a href={guide.link} target="_blank" rel="noopener noreferrer" className={styles.resourceLink}>
+                  {guide.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  </div>
+)}          </div>
         </div>
       )}
     </div>
