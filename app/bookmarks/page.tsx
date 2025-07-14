@@ -23,7 +23,14 @@ export default function Bookmarks() {
     const loadBookmarks = () => {
       try {
         const bookmarkedIds = JSON.parse(localStorage.getItem('bookmarks') || '[]')
-        const allProjects = Object.values(projects.projects).flat() as Project[]
+        const staticProjects = Object.values(projects.projects).flat() as Project[]
+        const generated = JSON.parse(localStorage.getItem('generatedProjects') || '[]') as Project[]
+        const allProjects = [...staticProjects, ...generated]
+        console.log(bookmarkedIds)
+        console.log(staticProjects)
+        console.log(allProjects)
+
+
         const bookmarked = allProjects.filter(project => 
           bookmarkedIds.includes(project.id)
         )
@@ -34,6 +41,10 @@ export default function Bookmarks() {
         setIsLoading(false)
       }
     }
+
+    // console.log(bookmarkedIds)
+    // console.log(staticProjects)
+
 
     loadBookmarks()
     window.addEventListener('storage', loadBookmarks)

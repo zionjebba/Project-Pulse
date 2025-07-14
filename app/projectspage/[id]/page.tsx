@@ -1,142 +1,159 @@
-// app/projectspage/[id]/page.tsx
-'use client'
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import projects from '../../data/projects.json'
-import styles from './projectspage.module.css'
+'use client';
 
-export default function ProjectPage({ params }: { params: { id: string } }) {
-  const projectsData = projects as ProjectsData;
-  const allProjects = Object.values(projectsData.projects).flat();
+import { use } from 'react';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { getAllProjects, Project } from '@/app/utils/helpers';
+import styles from './projectspage.module.css';
+
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
+
+export default function ProjectPage({ params }: PageProps) {
+  const { id } = use(params);
+
+  const [project, setProject] = useState<Project | null>(null);
   const [isBookmarked, setIsBookmarked] = useState(false);
-  const [showToast, setShowToast] = useState(false);
-
-  const project = allProjects.find(p => p.id === params.id);
-
-  useEffect(() => {
-    const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
-    setIsBookmarked(bookmarks.includes(params.id));
-  }, [params.id]);
+  const [isMounted, setIsMounted] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
-    if (showToast) {
-      const timer = setTimeout(() => setShowToast(false), 3000);
-      return () => clearTimeout(timer);
+    setIsMounted(true);
+    const allProjects = getAllProjects();
+    const foundProject = allProjects.find((p) => p.id === id);
+
+    if (!foundProject) {
+      router.push('/404');
+      return;
     }
-  }, [showToast]);
+
+    setProject(foundProject);
+
+    const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+    setIsBookmarked(bookmarks.includes(id));
+  }, [id, router]);
 
   const toggleBookmark = () => {
     const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
-    const updatedBookmarks = isBookmarked
-      ? bookmarks.filter((id: string) => id !== params.id)
-      : [...bookmarks, params.id];
-    
-    localStorage.setItem('bookmarks', JSON.stringify(updatedBookmarks));
+    const updated = isBookmarked
+      ? bookmarks.filter((bId: string) => bId !== id)
+      : [...bookmarks, id];
+    localStorage.setItem('bookmarks', JSON.stringify(updated));
     setIsBookmarked(!isBookmarked);
-    setShowToast(true);
-    window.dispatchEvent(new Event('storage'));
   };
 
-  if (!project) {
-    return (
-      <div className={styles.errorContainer}>
-        <h2>Project Not Found</h2>
-        <p>No project exists with ID: {params.id}</p>
-        <Link href="/dashboard" className={styles.backLink}>
-          ← Return to Dashboard
-        </Link>
-      </div>
-    )
-  }
+  if (!isMounted) return <div className={styles.loading}>Loading...</div>;
+  if (!project) return <div className={styles.loading}>Project not found</div>;
 
   return (
     <div className={styles.projectContainer}>
-      {/* NEW BOOKMARK CONTROLS - ADD THIS SECTION */}
+      <button onClick={() => router.back()} className={styles.backLink}>
+        &larr; Back
+      </button>
+
+      <h1 className={styles.heading}>{project.title}</h1>
+      <span className={styles.category}>{project.category}</span>
+      <p className={styles.description}>{project.description}</p>
+
       <div className={styles.bookmarkControls}>
         <button
           onClick={toggleBookmark}
           className={`${styles.bookmarkButton} ${isBookmarked ? styles.bookmarked : ''}`}
         >
-          {isBookmarked ? '★ Bookmarked' : '☆ Bookmark This Project'}
+          {isBookmarked ? 'Bookmarked ✓' : 'Bookmark this Project'}
         </button>
-        <Link href="/bookmarks" className={styles.viewBookmarksLink}>
-          View All Bookmarks →
-        </Link>
-        {showToast && (
-          <div className={styles.toast}>
-            {isBookmarked ? '✓ Added to bookmarks' : '✗ Removed from bookmarks'}
-          </div>
-        )}
       </div>
 
-      {/* YOUR EXISTING PROJECT CONTENT */}
-      <h1 className={styles.heading}>{project.title}</h1>
-      <div className={styles.category}>{project.category}</div>
-      <p className={styles.description}>{project.description}</p>
-      
       {project.details && (
         <div className={styles.detailsSection}>
           <h2 className={styles.subHeading}>Project Details</h2>
           <div className={styles.detailGrid}>
-{project.details?.steps && (
-  <div className={styles.stepsSection}>
-    <h3 className={styles.sectionTitle}>Implementation Steps</h3>
-    <div className={styles.stepsContainer}>
-      {project.details.steps.map((step, index) => (
-        <div key={index} className={styles.stepCard}>
-          <h4 className={styles.stepTitle}>
-            <span className={styles.stepNumber}>Step {index + 1}:</span> {step.title}
-          </h4>
-          <ul className={styles.stepItems}>
-            {step.items.map((item, itemIndex) => (
-              <li key={itemIndex} className={styles.stepItem}>
-                <span className={styles.itemBullet}>•</span> {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
-  </div>
-)}
-
-{project.details?.resources && (
-  <div className={styles.resourcesSection}>
-    <h3 className={styles.sectionTitle}>Resources</h3>
-    <div className={styles.resourcesGrid}>
-      {project.details.resources.tools && (
-        <div className={styles.resourceCategory}>
-          <h4 className={styles.resourceHeader}>Tools & Technologies</h4>
-          <ul className={styles.resourceList}>
-            {project.details.resources.tools.map((tool, index) => (
-              <li key={index} className={styles.resourceItem}>
-                <a href={tool.link} target="_blank" rel="noopener noreferrer" className={styles.resourceLink}>
-                  {tool.name}
-                </a>
-              </li>
-            ))}
-          </ul>
+            {project.details.fullDescription && (
+              <div className={styles.stepCard}>
+                <h3 className={styles.stepTitle}>Description</h3>
+                <p>{project.details.fullDescription}</p>
+              </div>
+            )}
+            {project.details.difficulty && (
+              <div className={styles.stepCard}>
+                <h3 className={styles.stepTitle}>Difficulty</h3>
+                <p>{project.details.difficulty}</p>
+              </div>
+            )}
+            {project.details.duration && (
+              <div className={styles.stepCard}>
+                <h3 className={styles.stepTitle}>Duration</h3>
+                <p>{project.details.duration}</p>
+              </div>
+            )}
+            {project.details.learningObjectives && (
+              <div className={styles.stepCard}>
+                <h3 className={styles.stepTitle}>Learning Objectives</h3>
+                <ul className={styles.stepItems}>
+                  {project.details.learningObjectives.map((obj, index) => (
+                    <li key={index} className={styles.stepItem}>
+                      <span className={styles.itemBullet}>•</span> {obj}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {project.details.steps && (
+              <div className={styles.stepCard}>
+                <h3 className={styles.stepTitle}>Steps</h3>
+                <ul className={styles.stepItems}>
+                  {project.details.steps.map((step, index) => (
+                    <li key={index} className={styles.stepItem}>
+                      <strong>{step.title}</strong>
+                      <ul>
+                        {step.items.map((item, i) => (
+                          <li key={i} className={styles.stepItem}>
+                            <span className={styles.itemBullet}>–</span> {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {project.details.resources && (
+              <div className={styles.stepCard}>
+                <h3 className={styles.stepTitle}>Resources</h3>
+                {project.details.resources.tools && (
+                  <>
+                    <h4>Tools</h4>
+                    <ul className={styles.stepItems}>
+                      {project.details.resources.tools.map((tool, index) => (
+                        <li key={index} className={styles.stepItem}>
+                          <a href={tool.link} target="_blank" rel="noopener noreferrer">
+                            {tool.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+                {project.details.resources.guides && (
+                  <>
+                    <h4>Guides</h4>
+                    <ul className={styles.stepItems}>
+                      {project.details.resources.guides.map((guide, index) => (
+                        <li key={index} className={styles.stepItem}>
+                          <a href={guide.link} target="_blank" rel="noopener noreferrer">
+                            {guide.title}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       )}
-      {project.details.resources.guides && (
-        <div className={styles.resourceCategory}>
-          <h4 className={styles.resourceHeader}>Learning Guides</h4>
-          <ul className={styles.resourceList}>
-            {project.details.resources.guides.map((guide, index) => (
-              <li key={index} className={styles.resourceItem}>
-                <a href={guide.link} target="_blank" rel="noopener noreferrer" className={styles.resourceLink}>
-                  {guide.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
     </div>
-  </div>
-)}          </div>
-        </div>
-      )}
-    </div>
-  )
+  );
 }

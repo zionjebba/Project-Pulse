@@ -22,6 +22,13 @@ export default function Dashboard() {
 
   return (
     <div className={styles["dashboard-container"]}>
+
+      <div className="menu">
+          <h1>
+      <Link href={`/dashboard`}> Browse Projects </Link> |
+      <Link href={`../ai`} > Generate Your Own Project </Link></h1>   
+      </div>
+
       {/* Search Input */}
       <div className={styles["search"]}>
         <input

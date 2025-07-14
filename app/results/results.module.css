@@ -1,0 +1,157 @@
+/* results.module.css */
+
+/* Base container – subtle difference with a teal-tinted gradient */
+.results-container {
+    min-height: 100vh;
+    background-color: #13171d;
+    background-image:
+      radial-gradient(circle at 25% 40%, rgba(54, 78, 92, 0.7) 0%, transparent 25%),
+      radial-gradient(circle at 75% 60%, rgba(54, 78, 92, 0.5) 0%, transparent 30%);
+    color: #e5e9f0;
+    padding: 2rem;
+    font-family: 'Inter', -apple-system, sans-serif;
+  }
+  
+  /* Page header/menu bar */
+  .menu {
+    margin-bottom: 2rem;
+  }
+  
+  .menu h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #a3be8c;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  /* Projects grid */
+  .recommendations {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+  }
+  
+  @media (min-width: 768px) {
+    .recommendations {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .recommendations {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  /* Cards for generated projects */
+  .recommendation-tab {
+    background: linear-gradient(145deg, #1f2630 0%, #2e3440 100%);
+    border-radius: 16px;
+    padding: 1.75rem;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid #39424e;
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.1),
+      0 1px 2px rgba(0, 0, 0, 0.08);
+    color: inherit;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .recommendation-tab:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 10px 15px rgba(0, 0, 0, 0.2),
+      0 4px 6px rgba(0, 0, 0, 0.1);
+    border-color: #8fbcbb;
+  }
+  
+  /* Title */
+  .recommendation-tab-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #88c0d0;
+    margin-bottom: 0.75rem;
+  }
+  
+  .recommendation-tab:hover .recommendation-tab-title {
+    color: #81a1c1;
+  }
+  
+  /* Category */
+  .recommendation-tab-category {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background-color: #3b4252;
+    color: #a3be8c;
+    margin-bottom: 1rem;
+    border: 1px solid #4c566a;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  /* Description */
+  .recommendation-tab-description {
+    color: #d8dee9;
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Technologies section */
+  .technologies {
+    font-size: 0.875rem;
+    color: #b48ead;
+    margin-top: 0.5rem;
+  }
+  
+  /* Back button */
+  .back-button {
+    display: inline-block;
+    margin-top: 3rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #2e3440;
+    color: #eceff4;
+    border-radius: 8px;
+    border: 1px solid #434c5e;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background-color: #3b4252;
+    border-color: #5e81ac;
+    color: #d8dee9;
+  }
+  
+  .bookmarkBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--accent-color);
+    transition: transform 0.2s;
+  }
+  
+  .bookmarkBtn:hover {
+    transform: scale(1.2);
+  }
+  
+  .recommendation-tab {
+    position: relative;
+    padding-top: 2rem;
+  }

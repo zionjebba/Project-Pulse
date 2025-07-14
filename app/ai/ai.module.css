@@ -1,0 +1,130 @@
+/* AI Generator Styles */
+.ai-generator {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: 1fr;
+    margin-top: 2rem;
+  }
+  
+  @media (min-width: 1024px) {
+    .ai-generator {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+  
+  .ai-form {
+    background: linear-gradient(145deg, #2a303c 0%, #3b4252 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid #3b4252;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ai-form h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #88c0d0;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #d8dee9;
+    font-weight: 500;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    background-color: #3b4252;
+    border: 1px solid #4c566a;
+    color: #e5e9f0;
+    font-size: 1rem;
+  }
+  
+  .form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  .ai-form button {
+    background: linear-gradient(90deg, #5e81ac 0%, #88c0d0 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+  }
+  
+  .ai-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .ai-form button:disabled {
+    background: #4c566a;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .error {
+    color: #bf616a;
+    margin-top: 1rem;
+  }
+  
+  /* Search History */
+  .search-history {
+    margin-top: 2rem;
+  }
+  
+  .search-history h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #d8dee9;
+  }
+  
+  .history-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .history-item {
+    background: #3b4252;
+    border: 1px solid #4c566a;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    color: #d8dee9;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .history-item:hover {
+    background: #434c5e;
+    border-color: #5e81ac;
+  }
+  
+  /* Generated Projects */
+  .generated-projects h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #88c0d0;
+  }
+  
+  .technologies {
+    font-size: 0.875rem;
+    color: #a3be8c;
+    margin-top: 0.5rem;
+  }
